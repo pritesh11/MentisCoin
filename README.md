@@ -1,30 +1,60 @@
-# SavjeeCoin
+# MentisCoin
 
-[![Build Status](https://travis-ci.org/Savjee/SavjeeCoin.svg?branch=master)](https://travis-ci.org/Savjee/SavjeeCoin) [![Coverage Status](https://coveralls.io/repos/github/Savjee/SavjeeCoin/badge.svg?branch=master)](https://coveralls.io/github/Savjee/SavjeeCoin?branch=master)
+=================================================================================
 
-A very simple blockchain implementation in Javascript.
+Server side scripting Using node.js
 
-For education purposes only. This is by no means a complete implementation and it is by no means secure!
+# node -version should be latest stable v10.15.3
 
-# Features
+create package.json file
+We will need SHA256 algorithm - not present by default hence we import node module
 
-* Simple proof-of-work algorithm
-* Verify blockchain (to prevent tampering)
-* Generate wallet (private/public key)
-* Sign transactions
+# npm install --save crypto-js
 
-# Videos
-This source code comes from [my video series on YouTube](https://www.youtube.com/watch?v=zVqczFZr124&list=PLzvRQMJ9HDiTqZmbtFisdXFxul5k0F-Q4). You can check them here:
+First block in Blockchain is a genesis Block add it manually
 
-| Video 1: Simple implementation | Video 2: Adding Proof-of-work |
-:-------------------------:|:-------------------------:
-[![](https://img.youtube.com/vi/zVqczFZr124/maxresdefault.jpg)](https://www.youtube.com/watch?v=zVqczFZr124) | [![](https://img.youtube.com/vi/HneatE69814/maxresdefault.jpg)](https://www.youtube.com/watch?v=HneatE69814)
+Note: datatypes dont work in js so use const and let
 
+Proof of Work ---- Mining (TO prove that you put lots of effort computing the hash)
+Appending 0000 in hash (This happens by setting difficulty )
+For eg, Bitcoin has new block available every 10 min.
 
-| Video 3: Mining rewards & transactions | Video 4: Signing transactions |
-:-------------------------:|:-------------------------:
-[![](https://img.youtube.com/vi/fRV6cGXVQ4I/maxresdefault.jpg)](https://www.youtube.com/watch?v=fRV6cGXVQ4I) | [![](https://img.youtube.com/vi/kWQ84S13-hw/maxresdefault.jpg)](https://www.youtube.com/watch?v=kWQ84S13-hw)
+Mining Rewards and putting transactions in the blocks
 
-| Video 5: Building a front-end in Angular |
-:---------:
-[![](https://img.youtube.com/vi/AQV0WNpE_3g/maxresdefault.jpg)](https://www.youtube.com/watch?v=AQV0WNpE_3g) |
+Pending transactions array is used to store transactions that can go to the block as the block are generated every
+10 min. In between transactions are stored in transactions array;
+
+Rewards to the miner is put under pendingTransactions hence they will get the Rewards when new block is mined.
+
+Doubt why hash function is not changed
+
+Signing transactions
+spend coin that are yours that way you can only spend coin if you have the private key of it
+
+sign transactions with the privateKey of yours.
+fromAddress and toAddress will be publicKey of the sender's and receiver's
+
+Increase difficulty value to Demonstrate the mining takes time
+
+=========================================================================================
+
+UI Development
+
+Will use Angular js
+
+Install angular cli globally on your system
+sudo npm install -g @angular/cli
+
+ng new MentisCoin
+
+cd mentisCoin
+
+ng serve - to run the angular project
+http://localhost:4200/
+
+Open new terminal and create service this will be used to contact to our node js blockchain app i.e. Server side scripts
+g stands for generate
+ng g service services/blockchain
+
+Now lets include our blockchain app through github in our angular project
+npm install --save github:<username>/<projectname>
