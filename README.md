@@ -2,14 +2,14 @@
 
 =================================================================================
 
-Server side scripting Using node.js
+#Server side scripting Using node.js
 
-# node -version should be latest stable v10.15.3
+node -version should be latest stable v10.15.3
 
 create package.json file
 We will need SHA256 algorithm - not present by default hence we import node module
 
-# npm install --save crypto-js
+ npm install --save crypto-js
 
 First block in Blockchain is a genesis Block add it manually
 
@@ -38,7 +38,7 @@ Increase difficulty value to Demonstrate the mining takes time
 
 =========================================================================================
 
-UI Development
+# UI Development
 
 Will use Angular js
 
