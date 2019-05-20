@@ -1,23 +1,9 @@
 {
-  "name": "SavjeeCoin",
+  "name": "MentisCoin",
   "version": "1.0.0",
   "description": "Simple Blockchain implementation in Javascript. For educational purposes only.",
   "main": "src/main.js",
-  "scripts": {
-    "test": "mocha tests/*.js",
-    "lint": "eslint src/** tests/**",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
-  },
-  "author": "Xavier Decuyper <hi@savjee.be>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/SavjeeTutorials/SavjeeCoin.git"
-  },
-  "bugs": {
-    "url": "https://github.com/SavjeeTutorials/SavjeeCoin/issues"
-  },
-  "homepage": "https://github.com/SavjeeTutorials/SavjeeCoin",
+  "author": "Pritesh Vaviya",
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "elliptic": "^6.4.1"
