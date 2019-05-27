@@ -1,45 +1,36 @@
-const {Blockchain, Transaction} = require('./blockchain');
+const { Blockchain, Transaction } = require('./blockchain');
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 
-const myKey = ec.keyFromPrivate('edfe7ab3a3b0ec62090543be52930a7b600221b86c575b74929cf47201cd80b7');
+
+const myKey = ec.keyFromPrivate('7c4c45907dec40c91bab3480c39032e90049f1a44f3e18c3e07c23e3273995cf');
+
 const myWalletAddress = myKey.getPublic('hex');
 
-let mentisCoin = new Blockchain();
+const mentisCoin = new Blockchain();
 
-//Mining Block Demonstration (Time delay in adding blocks to chain to avoid spammers)
-//Single block single transaction
-const tx1 = new Transaction(myWalletAddress, 'public key of receiver',10);
+// Create a transaction & sign it with your key
+const tx1 = new Transaction(myWalletAddress, 'address2', 100);
 tx1.signTransaction(myKey);
 mentisCoin.addTransaction(tx1);
 
-
-console.log('\nStarting the miner........');
+// Mine block
 mentisCoin.minePendingTransactions(myWalletAddress);
 
-console.log('\nBalance of Pritesh is '+mentisCoin.getBalanceOfAddress(myWalletAddress));
-
-//Single block multiple transaction
-const tx2 = new Transaction(myWalletAddress, 'public key of receiver',40);
+// Create second transaction
+const tx2 = new Transaction(myWalletAddress, 'address1', 50);
 tx2.signTransaction(myKey);
 mentisCoin.addTransaction(tx2);
 
-const tx3 = new Transaction(myWalletAddress, 'public key of receiver',20);
-tx3.signTransaction(myKey);
-mentisCoin.addTransaction(tx3);
-
-
-console.log('\nStarting the miner Again........');
+// Mine block
 mentisCoin.minePendingTransactions(myWalletAddress);
 
-console.log('\nBalance of Pritesh is '+mentisCoin.getBalanceOfAddress(myWalletAddress));
+console.log();
+console.log(`Balance of xavier is ${mentisCoin.getBalanceOfAddress(myWalletAddress)}`);
 
-/*
 // Uncomment this line if you want to test tampering with the chain
-mentisCoin.chain[1].transactions[0].amount = 1;
-console.log('Is chain valid?\n', mentisCoin.isChainValid());
-*/
+// mentisCoin.chain[1].transactions[0].amount = 10;
 
-
-//Printing Chain
-console.log(JSON.stringify(mentisCoin, null, 4));
+// Check if the chain is valid
+console.log();
+console.log('Blockchain valid?', mentisCoin.isChainValid() ? 'Yes' : 'No');

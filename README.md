@@ -56,5 +56,14 @@ Open new terminal and create service this will be used to contact to our node js
 g stands for generate
 ng g service services/blockchain
 
+This is where the services will reside the endpoint and the only point through which we will interact with our server side blockchain script.
+
 Now lets include our blockchain app through github in our angular project
 npm install --save github:<username>/<projectname>
+npm install -save github:pritesh11/MentisCoin
+
+We will add components which acts as view hence pages in angular
+ng g component pages/blockchain-viewer
+
+
+
